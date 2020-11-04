@@ -5,7 +5,8 @@ import {
   UpdateDateColumn,
   JoinColumn,
   PrimaryGeneratedColumn,
-  ManyToOne,
+  OneToMany,
+  ManyToMany,
 } from 'typeorm';
 
 import Order from '@modules/orders/infra/typeorm/entities/Order';
@@ -16,19 +17,19 @@ class OrdersProducts {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Order, order => order.id, { eager: true })
+  @Column({ type: 'uuid' })
+  order_id: string;
+
+  @OneToMany(() => Order, order => order.id, { eager: true })
   @JoinColumn()
   order: Order;
 
-  @ManyToOne(() => Product, product => product.id, { eager: true })
-  @JoinColumn()
-  product: Product;
-
-  @Column('uuid')
+  @Column({ type: 'uuid' })
   product_id: string;
 
-  @Column('uuid')
-  order_id: string;
+  @ManyToMany(() => Product, product => product.id, { eager: true })
+  @JoinColumn()
+  product: Product;
 
   @Column()
   price: number;

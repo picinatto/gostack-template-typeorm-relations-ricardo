@@ -25,10 +25,7 @@ class CreateOrderService {
     private customersRepository: ICustomersRepository,
   ) {}
 
-  public async execute({
-    customer_id,
-    products,
-  }: IRequest): Promise<voidOrder> {
+  public async execute({ customer_id, products }: IRequest): Promise<void> {
     // TODO
   }
 }
