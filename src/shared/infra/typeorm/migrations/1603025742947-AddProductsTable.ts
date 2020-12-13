@@ -12,6 +12,7 @@ export default class AddProductsTable1603025742947
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'name',
@@ -20,12 +21,12 @@ export default class AddProductsTable1603025742947
           {
             name: 'price',
             type: 'decimal',
-            precision: 18,
+            precision: 10,
             scale: 2,
           },
           {
             name: 'quantity',
-            type: 'integer',
+            type: 'int',
           },
           {
             name: 'created_at',
